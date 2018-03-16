@@ -9,4 +9,5 @@ public interface Flower<T> {
 	float getPrice();
 
 	int getLenght();
+
 }

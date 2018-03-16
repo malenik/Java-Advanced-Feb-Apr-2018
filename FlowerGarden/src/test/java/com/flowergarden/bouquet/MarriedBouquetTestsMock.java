@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 public class MarriedBouquetTestsMock {
 
     /**
-     * The 2nd homework in which we had to create tests based on mock-objects, based on MarriedBouquet.class
+     * The 2nd homework in which we had to create tests based on mock-objects from MarriedBouquet.class
      */
 
     private Random rand = new Random();
@@ -124,9 +124,7 @@ public class MarriedBouquetTestsMock {
         mockedFlowers.add(mockRose);
         mockedFlowers.add(mockChamomile);
         mockedFlowers.add(mockTulip);
-
-        //Collections.sort(mockedFlowers, GeneralFlower.comparatorByStemLength);
-
+        
         FreshnessInteger freshnessRoseMocked = mock(FreshnessInteger.class);
         FreshnessInteger freshnessChamomilleMocked = mock(FreshnessInteger.class);
         FreshnessInteger freshnessTulipMocked = mock(FreshnessInteger.class);

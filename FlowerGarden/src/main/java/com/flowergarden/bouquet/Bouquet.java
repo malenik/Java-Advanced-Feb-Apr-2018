@@ -8,6 +8,8 @@ public interface Bouquet<T> {
 
     void addFlower(T flower);
 
+    void addFlowers(Collection<T> flowers);
+
     Collection<T> searchFlowersByLength(int start, int end);
 
     void sortByFreshness();

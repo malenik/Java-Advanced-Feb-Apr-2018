@@ -10,10 +10,8 @@ public class Tulip extends GeneralFlower {
     private int petals;
 
     public Tulip(int petals, int lenght, float price, FreshnessInteger fresh) {
+        super(fresh, price, lenght);
         this.petals = petals;
-        this.lenght = lenght;
-        this.price = price;
-        this.freshness = fresh;
     }
 
     public boolean getPetal() {
@@ -38,5 +36,16 @@ public class Tulip extends GeneralFlower {
     public int hashCode() {
 
         return Objects.hash(petals);
+    }
+
+    @Override
+    public String toString() {
+        return "Tulip{" +
+                "id=" + id +
+                ", petals=" + petals +
+                ", freshness=" + freshness +
+                ", price=" + price +
+                ", lenght=" + lenght +
+                '}';
     }
 }

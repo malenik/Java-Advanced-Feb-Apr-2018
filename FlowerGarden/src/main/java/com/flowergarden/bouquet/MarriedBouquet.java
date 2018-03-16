@@ -1,25 +1,38 @@
 package com.flowergarden.bouquet;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import com.flowergarden.flowers.Chamomile;
 import com.flowergarden.flowers.GeneralFlower;
-import com.flowergarden.flowers.Rose;
-import org.mockito.InjectMocks;
+
+import javax.xml.bind.annotation.XmlElement;
 
 public class MarriedBouquet implements Bouquet<GeneralFlower> {
 
 	private float assemblePrice; //= 120;
 	List<GeneralFlower> flowerList; //= new ArrayList<>();
 
+    @XmlElement
+    int bouquetId;
+
+    public int getBouquetId() {
+        return bouquetId;
+    }
+
+    public void setBouquetId(int bouquetId) {
+        this.bouquetId = bouquetId;
+    }
+
     public MarriedBouquet(float assemblePrice, List<GeneralFlower> flowerList) {
         this.assemblePrice = assemblePrice;
         this.flowerList = flowerList;
+    }
+
+    public MarriedBouquet(int bouquetId, float assemblePrice) {
+        this(assemblePrice, new ArrayList<>());
+        this.bouquetId = bouquetId;
     }
 
     @Override
@@ -36,7 +49,12 @@ public class MarriedBouquet implements Bouquet<GeneralFlower> {
 			flowerList.add(flower);
 	}
 
-	@Override
+    @Override
+    public void addFlowers(Collection<GeneralFlower> flowers) {
+        flowerList.addAll(flowers);
+    }
+
+    @Override
 	public Collection<GeneralFlower> searchFlowersByLength(int start, int end) {
 		List<GeneralFlower> searchResult = new ArrayList<GeneralFlower>();
 		for (GeneralFlower flower : flowerList) {
@@ -59,5 +77,16 @@ public class MarriedBouquet implements Bouquet<GeneralFlower> {
 
 	public void setAssembledPrice(float price) {
 		assemblePrice = price;
+	}
+
+	public float getAssemblePrice() { return assemblePrice; }
+
+	@Override
+	public String toString() {
+		return "MarriedBouquet{" +
+				"assemblePrice=" + assemblePrice +
+				", flowerList=" + flowerList +
+				", bouquetId=" + bouquetId +
+				'}';
 	}
 }

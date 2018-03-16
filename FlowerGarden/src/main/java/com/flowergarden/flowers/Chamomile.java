@@ -9,10 +9,8 @@ public class Chamomile extends GeneralFlower {
 	private int petals;
 	
 	public Chamomile(int petals, int lenght, float price, FreshnessInteger fresh){
+		super(fresh, price, lenght);
 		this.petals = petals;
-		this.lenght = lenght;
-		this.price = price;
-		this.freshness = fresh;
 	}
 	
 	public boolean getPetal(){
@@ -35,7 +33,17 @@ public class Chamomile extends GeneralFlower {
 
 	@Override
 	public int hashCode() {
-
-		return Objects.hash(petals);
+	    return Objects.hash(petals);
 	}
+
+    @Override
+    public String toString() {
+        return "Chamomile{" +
+                "id=" + id +
+                ", petals=" + petals +
+                ", freshness=" + freshness +
+                ", price=" + price +
+                ", lenght=" + lenght +
+                '}';
+    }
 }

@@ -12,14 +12,8 @@ public class Rose extends GeneralFlower {
     private boolean spike;
 
     public Rose(boolean spike, int lenght, float price, FreshnessInteger fresh) {
+        super(fresh, price, lenght);
         this.spike = spike;
-        this.lenght = lenght;
-        this.price = price;
-        this.freshness = fresh;
-    }
-
-    public Rose() {
-
     }
 
     public boolean getSpike() {
@@ -38,5 +32,16 @@ public class Rose extends GeneralFlower {
     public int hashCode() {
 
         return Objects.hash(spike);
+    }
+
+    @Override
+    public String toString() {
+        return "Rose{" +
+                "id=" + id +
+                ", spike=" + spike +
+                ", freshness=" + freshness +
+                ", price=" + price +
+                ", lenght=" + lenght +
+                '}';
     }
 }

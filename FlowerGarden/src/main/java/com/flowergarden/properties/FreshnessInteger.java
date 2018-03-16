@@ -29,4 +29,8 @@ public class FreshnessInteger implements Freshness<Integer>, Comparable<Freshnes
 		return 0;
 	}
 
+	@Override
+	public String toString() {
+		return freshness.toString();
+	}
 }

@@ -8,8 +8,18 @@ import java.util.Comparator;
 
 public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower> {
 
-	FreshnessInteger freshness;
-	
+    public GeneralFlower(FreshnessInteger freshness, float price, int lenght) {
+        this.freshness = freshness;
+        this.price = price;
+        this.lenght = lenght;
+
+    }
+
+    FreshnessInteger freshness;
+
+    @XmlElement
+    int id;
+
 	@XmlElement
 	float price;
 	
@@ -24,6 +34,10 @@ public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>
 	public FreshnessInteger getFreshness() {
 		return freshness;
 	}
+
+    public void setId(int id) { this.id = id; }
+
+    public int getId() { return id; }
 
 	@Override
 	public float getPrice() {
@@ -41,4 +55,13 @@ public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>
 		return this.getFreshness().getFreshness() - compareFresh;
 	}
 
+	@Override
+	public String toString() {
+		return "GeneralFlower{" +
+                "id=" + id +
+				"freshness=" + freshness +
+				", price=" + price +
+				", lenght=" + lenght +
+				'}';
+	}
 }
