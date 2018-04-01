@@ -1,5 +1,6 @@
 package com.flowergarden.flowers;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.flowergarden.properties.FreshnessInteger;
@@ -9,6 +10,7 @@ import java.util.Objects;
 @XmlRootElement
 public class Rose extends GeneralFlower {
 
+    @XmlElement
     private boolean spike;
 
     public Rose(boolean spike, int lenght, float price, FreshnessInteger fresh) {
@@ -16,8 +18,16 @@ public class Rose extends GeneralFlower {
         this.spike = spike;
     }
 
+    public Rose() {
+
+    }
+
     public boolean getSpike() {
         return spike;
+    }
+
+    public void setSpike(boolean spike) {
+        this.spike = spike;
     }
 
     @Override

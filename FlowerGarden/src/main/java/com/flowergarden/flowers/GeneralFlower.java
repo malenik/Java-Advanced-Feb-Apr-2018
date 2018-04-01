@@ -2,19 +2,23 @@ package com.flowergarden.flowers;
 
 import javax.xml.bind.annotation.XmlElement;
 
+import com.flowergarden.json.AbstractJson;
 import com.flowergarden.properties.FreshnessInteger;
 
 import java.util.Comparator;
 
-public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower> {
+public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>, AbstractJson {
 
-    public GeneralFlower(FreshnessInteger freshness, float price, int lenght) {
+	public GeneralFlower(FreshnessInteger freshness, float price, int lenght) {
         this.freshness = freshness;
         this.price = price;
         this.lenght = lenght;
-
     }
 
+	public GeneralFlower() {
+	}
+
+	@XmlElement
     FreshnessInteger freshness;
 
     @XmlElement
@@ -47,6 +51,14 @@ public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>
 	@Override
 	public int getLenght() {
 		return lenght;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public void setLenght(int lenght) {
+		this.lenght = lenght;
 	}
 
 	@Override

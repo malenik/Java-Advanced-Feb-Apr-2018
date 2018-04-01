@@ -6,24 +6,17 @@ import java.util.Collections;
 import java.util.List;
 
 import com.flowergarden.flowers.GeneralFlower;
+import com.flowergarden.json.AbstractJson;
 
 import javax.xml.bind.annotation.XmlElement;
 
-public class MarriedBouquet implements Bouquet<GeneralFlower> {
+public class MarriedBouquet implements Bouquet<GeneralFlower>, AbstractJson {
 
-	private float assemblePrice; //= 120;
-	List<GeneralFlower> flowerList; //= new ArrayList<>();
+	private float assemblePrice = 120;
+	List<GeneralFlower> flowerList = new ArrayList<>();
 
     @XmlElement
     int bouquetId;
-
-    public int getBouquetId() {
-        return bouquetId;
-    }
-
-    public void setBouquetId(int bouquetId) {
-        this.bouquetId = bouquetId;
-    }
 
     public MarriedBouquet(float assemblePrice, List<GeneralFlower> flowerList) {
         this.assemblePrice = assemblePrice;
@@ -34,6 +27,17 @@ public class MarriedBouquet implements Bouquet<GeneralFlower> {
         this(assemblePrice, new ArrayList<>());
         this.bouquetId = bouquetId;
     }
+
+	public MarriedBouquet() {
+	}
+
+	public int getBouquetId() {
+		return bouquetId;
+	}
+
+	public void setBouquetId(int bouquetId) {
+		this.bouquetId = bouquetId;
+	}
 
     @Override
 	public float getPrice() {
@@ -56,7 +60,7 @@ public class MarriedBouquet implements Bouquet<GeneralFlower> {
 
     @Override
 	public Collection<GeneralFlower> searchFlowersByLength(int start, int end) {
-		List<GeneralFlower> searchResult = new ArrayList<GeneralFlower>();
+		List<GeneralFlower> searchResult = new ArrayList<>();
 		for (GeneralFlower flower : flowerList) {
 			if (flower.getLenght() >= start && flower.getLenght() <= end) {
 				searchResult.add(flower);

@@ -7,20 +7,29 @@ import com.flowergarden.flowers.GeneralFlower;
 import com.flowergarden.flowers.Rose;
 import com.flowergarden.flowers.Tulip;
 import com.flowergarden.properties.FreshnessInteger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class FlowerDAOImpl implements FlowerDAO {
 
-    private final ConnectionPool connectionPool;
+    ConnectionPool connectionPool;
 
+    public FlowerDAOImpl() {
+
+    }
+
+    @Autowired
     public FlowerDAOImpl(ConnectionPool connectionPool) {
         this.connectionPool = connectionPool;
     }
 
-    //private static final String URL = "jdbc:sqlite:file:/Users/vasyachicos/Desktop/Java-Advanced-Feb-Apr-2018/FlowerGarden/flowergarden.db";
+    public void setConnectionPool(ConnectionPool connectionPool) {
+        this.connectionPool = connectionPool;
+    }
 
     @Override
     public void updateFlower(int key, Tulip tulip) throws SQLException {
@@ -29,9 +38,9 @@ public class FlowerDAOImpl implements FlowerDAO {
                      "lenght = ?, " +
                      "freshness = ?, " +
                      "price = ?, " +
-                     "petals = ?, " +
+                     "petals = ? " +
                      "WHERE id = ? "
-             );
+             )
         ) {
             pst.setInt(1, tulip.getLenght());
             pst.setInt(2, tulip.getFreshness().getFreshness());
@@ -50,9 +59,9 @@ public class FlowerDAOImpl implements FlowerDAO {
                      "lenght = ?, " +
                      "freshness = ?, " +
                      "price = ?, " +
-                     "petals = ?, " +
+                     "petals = ? " +
                      "WHERE id = ? "
-             );
+             )
         ) {
             pst.setInt(1, chamomile.getLenght());
             pst.setInt(2, chamomile.getFreshness().getFreshness());
@@ -73,7 +82,7 @@ public class FlowerDAOImpl implements FlowerDAO {
                      "price = ?, " +
                      "spike = ? " +
                      "WHERE id = ? "
-             );
+             )
         ) {
             pst.setInt(1, rose.getLenght());
             pst.setInt(2, rose.getFreshness().getFreshness());
@@ -88,7 +97,7 @@ public class FlowerDAOImpl implements FlowerDAO {
     @Override
     public void deleteFlower(int key) throws SQLException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement pst = conn.prepareStatement("DELETE FROM flowers WHERE id = ?");
+             PreparedStatement pst = conn.prepareStatement("DELETE FROM flower WHERE id = ?")
         ) {
             pst.setInt(1, key);
             pst.executeQuery();
@@ -99,7 +108,7 @@ public class FlowerDAOImpl implements FlowerDAO {
     public List<GeneralFlower> getAllFlowers() throws SQLException {
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement pst = conn.prepareStatement("SELECT * FROM flower");
-             ResultSet rs = pst.executeQuery();
+             ResultSet rs = pst.executeQuery()
         ) {
             List<GeneralFlower> flowersList = new ArrayList<>();
 
@@ -113,7 +122,7 @@ public class FlowerDAOImpl implements FlowerDAO {
     @Override
     public List<GeneralFlower> getAllFlowersFromBouquet(int bouquetId) throws SQLException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement pst = conn.prepareStatement("SELECT * FROM flower WHERE bouquet_id = ?");
+             PreparedStatement pst = conn.prepareStatement("SELECT * FROM flower WHERE bouquet_id = ?")
 
         ) {
             pst.setInt(1, bouquetId);
@@ -129,7 +138,7 @@ public class FlowerDAOImpl implements FlowerDAO {
     @Override
     public GeneralFlower getFlowerById(int key) throws SQLException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement pst = conn.prepareStatement("SELECT * FROM flower WHERE id = ?");
+             PreparedStatement pst = conn.prepareStatement("SELECT * FROM flower WHERE id = ?")
         ) {
             pst.setInt(1, key);
             try (ResultSet rs = pst.executeQuery()) {
