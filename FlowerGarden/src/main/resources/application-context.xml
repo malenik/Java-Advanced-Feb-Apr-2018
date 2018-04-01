@@ -1,0 +1,27 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+    <bean id="connectionPool" class="com.flowergarden.dao.impl.DummyConnectionPool"/>
+
+    <bean id="daoFlower" class="com.flowergarden.dao.impl.FlowerDAOImpl">
+        <property name="connectionPool" ref="connectionPool"/>
+    </bean>
+
+    <bean id="daoBouquet" class="com.flowergarden.dao.impl.MarriedBouquetDAOImpl">
+        <property name="connectionPool" ref="connectionPool"/>
+        <property name="flowerDAO" ref="daoFlower"/>
+    </bean>
+
+    <bean id="daoService" class="com.flowergarden.dao.DAOSpringService">
+        <property name="flowerDAO" ref="daoFlower"/>
+        <property name="marriedBouquetDAO" ref="daoBouquet"/>
+    </bean>
+
+</beans>
