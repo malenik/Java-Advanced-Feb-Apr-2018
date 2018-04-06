@@ -2,35 +2,16 @@ package com.flowergarden.flowers;
 
 import com.flowergarden.properties.FreshnessInteger;
 
-import javax.xml.bind.annotation.XmlElement;
 import java.util.Objects;
 
-public class Chamomile extends GeneralFlower {
-
-    @XmlElement
-    private int petals;
+public class Chamomile extends AbstractPetalable {
 
     public Chamomile(int petals, int lenght, float price, FreshnessInteger fresh) {
-        super(fresh, price, lenght);
-        this.petals = petals;
+        super(fresh, price, lenght, petals);
     }
 
     public Chamomile() {
 
-    }
-
-    public boolean getPetal() {
-        if (petals <= 0) return false;
-        petals = -1;
-        return true;
-    }
-
-    public int getPetals() {
-        return petals;
-    }
-
-    public void setPetals(int petals) {
-        this.petals = petals;
     }
 
     @Override

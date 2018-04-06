@@ -30,6 +30,7 @@ public class DAOLauncher {
             GeneralFlower someFlower = listFlowers.get(3);
             someFlower.setFreshness(new FreshnessInteger(333));
             flowerDAO.updateFlower(someFlower.getId(), (Rose) someFlower);
+
             System.out.println(flowerDAO.getFlowerById(someFlower.getId()));
 
             System.out.println("*****************************************");

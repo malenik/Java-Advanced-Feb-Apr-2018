@@ -5,8 +5,6 @@ import javax.xml.bind.annotation.XmlElement;
 import com.flowergarden.json.AbstractJson;
 import com.flowergarden.properties.FreshnessInteger;
 
-import java.util.Comparator;
-
 public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>, AbstractJson {
 
 	public GeneralFlower(FreshnessInteger freshness, float price, int lenght) {

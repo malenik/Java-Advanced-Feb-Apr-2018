@@ -1,6 +1,5 @@
 package com.flowergarden.classwork;
 
-import com.flowergarden.bouquet.MarriedBouquet;
 import com.flowergarden.flowers.Tulip;
 import com.flowergarden.properties.FreshnessInteger;
 import org.junit.Test;

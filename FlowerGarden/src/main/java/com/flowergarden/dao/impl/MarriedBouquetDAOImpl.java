@@ -8,20 +8,37 @@ import com.flowergarden.dao.MarriedBouquetDAO;
 import com.flowergarden.flowers.GeneralFlower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Properties;
 
 @Component
 public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
 
-    ConnectionPool connectionPool;
+    private static final String SQL_BOUQUET_ID = "sqlBouquetId";
+    private static final String SQL_UPDATE_BOUQUET = "sqlUpdateBouquet";
+    private static final String SQL_DELETE_BOUQUET = "sqlDeleteBouquet";
+    private static final String SQL_ALL_BOUQUETS = "sqlAllBouquets";
+    private static final Properties sql = new Properties();
 
-    FlowerDAO flowerDAO;
+    static {
+        try {
+            ClassLoader loader = MarriedBouquetDAOImpl.class.getClassLoader();
+            sql.load(loader.getResourceAsStream("sql-scripts.txt"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    private ConnectionPool connectionPool;
+
+    private FlowerDAO flowerDAO;
 
     @Autowired
     public MarriedBouquetDAOImpl(ConnectionPool connectionPool, FlowerDAO flowerDAO) {
@@ -53,15 +70,10 @@ public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
     @Override
     public void updateBouquet(int key, MarriedBouquet marriedBouquet) throws SQLException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement pst = conn.prepareStatement("UPDATE bouquet SET " +
-                     //"name = ?, " +
-                     "assemble_price = ? " +
-                     "WHERE id = ? "
-             )
+             PreparedStatement pst = conn.prepareStatement(sql.getProperty(SQL_UPDATE_BOUQUET))
         ) {
             pst.setFloat(1, marriedBouquet.getAssemblePrice());
             pst.setInt(2, key);
-
             pst.executeUpdate();
         }
     }
@@ -69,7 +81,7 @@ public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
     @Override
     public void deleteBouquet(int key) throws SQLException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement pst = conn.prepareStatement("DELETE FROM bouquet WHERE id = ?")
+             PreparedStatement pst = conn.prepareStatement(sql.getProperty(SQL_DELETE_BOUQUET))
         ) {
             pst.setInt(1, key);
             pst.executeQuery();
@@ -79,7 +91,7 @@ public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
     @Override
     public List<Bouquet> getAllBouquets() throws SQLException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement pst = conn.prepareStatement("SELECT * FROM bouquet");
+             PreparedStatement pst = conn.prepareStatement(sql.getProperty(SQL_ALL_BOUQUETS));
              ResultSet rs = pst.executeQuery()
         ) {
             List<Bouquet> bouquetsList = new ArrayList<>();
@@ -94,7 +106,7 @@ public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
     @Override
     public Bouquet getBouquetById(int key) throws SQLException {
         try (Connection conn = connectionPool.getConnection();
-             PreparedStatement pst = conn.prepareStatement("SELECT * FROM bouquet WHERE id = ?")
+             PreparedStatement pst = conn.prepareStatement(sql.getProperty(SQL_BOUQUET_ID))
         ) {
             pst.setInt(1, key);
             try (ResultSet rs = pst.executeQuery()) {
