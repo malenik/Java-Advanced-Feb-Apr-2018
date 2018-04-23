@@ -1,32 +1,35 @@
 package com.flowergarden.dao.impl;
 
 import com.flowergarden.dao.ConnectionPool;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
+import org.apache.log4j.Logger;
 
 @Component
-public class DummyConnectionPool implements ConnectionPool {
+public class ConnectionPoolImpl implements ConnectionPool {
     private final String url;
     private Connection connection;
     private Connection internal;
 
-    public DummyConnectionPool() {
-        this("jdbc:sqlite:file:/Users/vasyachicos/Desktop/Java-Advanced-Feb-Apr-2018/FlowerGarden/flowergarden.db");
+    private static Logger log = Logger.getLogger(ConnectionPoolImpl.class);
+
+    static final ConnectionPool INSTANCE = new ConnectionPoolImpl();
+
+    public ConnectionPoolImpl() {
+        this("jdbc:sqlite:C://Users/Nik/Desktop/Java/Java-Advanced-Feb-Apr-2018/FlowerGarden/flowergarden.db");
     }
 
-    public DummyConnectionPool(String url) {
+    public ConnectionPoolImpl(String url) {
         this.url = url;
     }
 
     public Connection getConnection() throws SQLException {
         if (connection == null) {
-            // TODO: intercept close()
+            log.info("Connection not null!");
             internal = DriverManager.getConnection(url);
             connection = new Connection() {
                 public Statement createStatement() throws SQLException {
@@ -251,11 +254,11 @@ public class DummyConnectionPool implements ConnectionPool {
         return connection;
     }
 
-
     @Override
     public void close() throws Exception {
         if (internal != null) {
             internal.close();
+            log.info("Connection closed!");
         }
     }
 }

@@ -2,7 +2,7 @@ package com.flowergarden.dao;
 
 import com.flowergarden.bouquet.Bouquet;
 import com.flowergarden.bouquet.MarriedBouquet;
-import com.flowergarden.dao.impl.DummyConnectionPool;
+import com.flowergarden.dao.impl.ConnectionPoolImpl;
 import com.flowergarden.dao.impl.FlowerDAOImpl;
 import com.flowergarden.dao.impl.MarriedBouquetDAOImpl;
 import com.flowergarden.flowers.GeneralFlower;
@@ -14,7 +14,7 @@ import java.util.List;
 public class DAOLauncher {
     public static void main(String[] args) throws Exception {
 
-        try (ConnectionPool connectionPool = new DummyConnectionPool()) {
+        try (ConnectionPool connectionPool = new ConnectionPoolImpl()) {
 
 
             System.out.println("******************************************");

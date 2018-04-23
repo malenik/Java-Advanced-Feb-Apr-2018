@@ -18,8 +18,6 @@ public class JsonUtil {
         OBJECT_MAPPER.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
         OBJECT_MAPPER.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//        OBJECT_MAPPER.setAnnotationIntrospector(new AnnotationIntrospectorPair
-//                (new JacksonAnnotationIntrospector(), new JaxbAnnotationIntrospector(OBJECT_MAPPER.getTypeFactory())));
     }
 
     public static String toPrettyJson(Object obj) {

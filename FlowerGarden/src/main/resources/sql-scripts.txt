@@ -1,0 +1,11 @@
+sqlFlowersById=SELECT * FROM flower WHERE id = ?
+sqlUpdateFlower1=UPDATE flower SET length = ?, freshness = ?, price = ?, petals = ? WHERE id = ?
+sqlUpdateFlower2=UPDATE flower SET length = ?, freshness = ?, price = ?, spike = ? WHERE id = ?
+sqlDeleteFlower=DELETE FROM flower WHERE id = ?
+sqlAllFlowers=SELECT * FROM flower
+sqlAllFlowersFromBouquet=SELECT * FROM flower WHERE bouquet_id = ?
+
+sqlBouquetId=SELECT * FROM bouquet WHERE id = ?
+sqlUpdateBouquet=UPDATE bouquet SET assemble_price = ? WHERE id = ?
+sqlDeleteBouquet=DELETE FROM bouquet WHERE id = ?
+sqlAllBouquets=SELECT * FROM bouquet

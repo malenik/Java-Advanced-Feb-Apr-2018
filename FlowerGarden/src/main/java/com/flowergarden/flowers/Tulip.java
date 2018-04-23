@@ -36,7 +36,7 @@ public class Tulip extends AbstractPetalable {
                 ", petals=" + petals +
                 ", freshness=" + freshness +
                 ", price=" + price +
-                ", lenght=" + lenght +
+                ", length=" + length +
                 '}';
     }
 }

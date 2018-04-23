@@ -1,14 +1,13 @@
 {
   "assemblePrice" : 17.0,
   "bouquetId" : 1,
-  "price" : 99.3,
   "flowers" : [ {
     "freshness" : {
       "freshness" : 1
     },
     "id" : 1,
     "price" : 12.5,
-    "lenght" : 10,
+    "length" : 10,
     "petals" : 6,
     "petal" : true
   }, {
@@ -17,7 +16,7 @@
     },
     "id" : 2,
     "price" : 15.6,
-    "lenght" : 12,
+    "length" : 12,
     "spike" : true
   }, {
     "freshness" : {
@@ -25,7 +24,7 @@
     },
     "id" : 3,
     "price" : 15.2,
-    "lenght" : 11,
+    "length" : 11,
     "spike" : true
   }, {
     "freshness" : {
@@ -33,7 +32,7 @@
     },
     "id" : 4,
     "price" : 13.0,
-    "lenght" : 15,
+    "length" : 15,
     "spike" : true
   }, {
     "freshness" : {
@@ -41,7 +40,7 @@
     },
     "id" : 5,
     "price" : 13.0,
-    "lenght" : 15,
+    "length" : 15,
     "spike" : true
   }, {
     "freshness" : {
@@ -49,7 +48,8 @@
     },
     "id" : 6,
     "price" : 13.0,
-    "lenght" : 15,
+    "length" : 15,
     "spike" : true
-  } ]
+  } ],
+  "price" : 99.3
 }

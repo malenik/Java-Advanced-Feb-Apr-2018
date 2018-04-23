@@ -51,7 +51,7 @@ public class Rose extends GeneralFlower {
                 ", spike=" + spike +
                 ", freshness=" + freshness +
                 ", price=" + price +
-                ", lenght=" + lenght +
+                ", length=" + length +
                 '}';
     }
 }

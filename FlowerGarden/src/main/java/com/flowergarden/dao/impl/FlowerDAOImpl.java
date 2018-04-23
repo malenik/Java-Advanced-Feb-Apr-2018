@@ -20,6 +20,12 @@ import java.util.Properties;
 @Repository
 public class FlowerDAOImpl implements FlowerDAO {
 
+    public static FlowerDAO INSTANCE = createInstance();
+
+    private static FlowerDAO createInstance() {
+        return new FlowerDAOImpl(ConnectionPoolImpl.INSTANCE);
+    }
+
     private static final String SQL_FLOWER_ID = "sqlFlowersById";
     private static final String SQL_UPDATE_FLOWER1 = "sqlUpdateFlower1";
     private static final String SQL_UPDATE_FLOWER2 = "sqlUpdateFlower2";
@@ -40,7 +46,7 @@ public class FlowerDAOImpl implements FlowerDAO {
     private ConnectionPool connectionPool;
 
     public FlowerDAOImpl() {
-
+        System.out.println("Pis6ka");
     }
 
     @Autowired
@@ -57,7 +63,7 @@ public class FlowerDAOImpl implements FlowerDAO {
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql.getProperty(SQL_UPDATE_FLOWER1))
         ) {
-            pst.setInt(1, petalable.getLenght());
+            pst.setInt(1, petalable.getLength());
             pst.setInt(2, petalable.getFreshness().getFreshness());
             pst.setFloat(3, petalable.getPrice());
             pst.setInt(4, petalable.getPetals());
@@ -72,7 +78,7 @@ public class FlowerDAOImpl implements FlowerDAO {
         try (Connection conn = connectionPool.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql.getProperty(SQL_UPDATE_FLOWER2))
         ) {
-            pst.setInt(1, rose.getLenght());
+            pst.setInt(1, rose.getLength());
             pst.setInt(2, rose.getFreshness().getFreshness());
             pst.setFloat(3, rose.getPrice());
             pst.setBoolean(4, rose.getSpike());
@@ -123,6 +129,7 @@ public class FlowerDAOImpl implements FlowerDAO {
             }
         }
     }
+
     @Override
     public GeneralFlower getFlowerById(int key) throws SQLException {
         try (Connection conn = connectionPool.getConnection();
@@ -145,7 +152,7 @@ public class FlowerDAOImpl implements FlowerDAO {
             case "rose":
                 generalFlower = new Rose(
                         rs.getBoolean("spike"),
-                        rs.getInt("lenght"),
+                        rs.getInt("length"),
                         rs.getFloat("price"),
                         new FreshnessInteger(rs.getInt("freshness"))
                 );
@@ -153,7 +160,7 @@ public class FlowerDAOImpl implements FlowerDAO {
             case "tulip":
                 generalFlower = new Tulip(
                         rs.getInt("petals"),
-                        rs.getInt("lenght"),
+                        rs.getInt("length"),
                         rs.getFloat("price"),
                         new FreshnessInteger(rs.getInt("freshness"))
                 );
@@ -161,7 +168,7 @@ public class FlowerDAOImpl implements FlowerDAO {
             case "chamomile":
                 generalFlower = new Chamomile(
                         rs.getInt("petals"),
-                        rs.getInt("lenght"),
+                        rs.getInt("length"),
                         rs.getFloat("price"),
                         new FreshnessInteger(rs.getInt("freshness"))
                 );

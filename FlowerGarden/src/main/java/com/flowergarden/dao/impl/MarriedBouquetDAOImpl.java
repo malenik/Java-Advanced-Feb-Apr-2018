@@ -7,6 +7,7 @@ import com.flowergarden.dao.FlowerDAO;
 import com.flowergarden.dao.MarriedBouquetDAO;
 import com.flowergarden.flowers.GeneralFlower;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
@@ -34,7 +35,6 @@ public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
             throw new RuntimeException(e);
         }
     }
-
 
     private ConnectionPool connectionPool;
 
@@ -163,6 +163,11 @@ public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
                     @Override
                     public Collection<GeneralFlower> getFlowers() {
                         return null;
+                    }
+
+                    @Override
+                    public float getAssemblePrice() {
+                        return 0;
                     }
                 };
         }

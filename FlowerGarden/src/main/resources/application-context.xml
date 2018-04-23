@@ -8,7 +8,7 @@
     http://www.springframework.org/schema/util/spring-util-3.0.xsd">
 
 
-    <bean id="connectionPool" class="com.flowergarden.dao.impl.DummyConnectionPool"/>
+    <bean id="connectionPool" class="com.flowergarden.dao.impl.ConnectionPoolImpl"/>
 
     <bean id="daoFlower" class="com.flowergarden.dao.impl.FlowerDAOImpl">
         <property name="connectionPool" ref="connectionPool"/>

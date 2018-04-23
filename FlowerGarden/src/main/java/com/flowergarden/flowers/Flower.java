@@ -8,6 +8,6 @@ public interface Flower<T> {
 
 	float getPrice();
 
-	int getLenght();
+	int getLength();
 
 }

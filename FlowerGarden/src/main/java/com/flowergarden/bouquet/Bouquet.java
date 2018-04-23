@@ -15,4 +15,7 @@ public interface Bouquet<T> {
     void sortByFreshness();
 
     Collection<T> getFlowers();
+
+    float getAssemblePrice();
+
 }

@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class FlowerJsonFileDAO implements JsonFileDAO<GeneralFlower> {
 
-    private File file = new File("/Users/vasyachicos/Desktop/Java-Advanced-Feb-Apr-2018/FlowerGarden/flowers.json");
+    private File file = new File("C://Users/Nik/Desktop/Java/Java-Advanced-Feb-Apr-2018/FlowerGarden/flowers.json");
 
     @Override
     public void save(GeneralFlower generalFlower) throws IOException {

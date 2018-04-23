@@ -1,32 +1,37 @@
 package com.flowergarden.flowers;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.flowergarden.json.AbstractJson;
 import com.flowergarden.properties.FreshnessInteger;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
 public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>, AbstractJson {
 
-	public GeneralFlower(FreshnessInteger freshness, float price, int lenght) {
+	public GeneralFlower(FreshnessInteger freshness, float price, int length) {
         this.freshness = freshness;
         this.price = price;
-        this.lenght = lenght;
+        this.length = length;
     }
 
 	public GeneralFlower() {
 	}
 
-	@XmlElement
+	@XmlElement(name = "freshness")
     FreshnessInteger freshness;
 
-    @XmlElement
+    @XmlElement (name = "id")
     int id;
 
-	@XmlElement
+	@XmlElement(name = "price")
 	float price;
-	
-	@XmlElement
-	int lenght;
+
+    @XmlElement(name = "length")
+	int length;
 	
 	public void setFreshness(FreshnessInteger fr){
 		freshness = fr;
@@ -47,16 +52,16 @@ public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>
 	}
 
 	@Override
-	public int getLenght() {
-		return lenght;
+	public int getLength() {
+		return length;
 	}
 
 	public void setPrice(float price) {
 		this.price = price;
 	}
 
-	public void setLenght(int lenght) {
-		this.lenght = lenght;
+	public void setLength(int length) {
+		this.length = length;
 	}
 
 	@Override
@@ -71,7 +76,7 @@ public class GeneralFlower implements Flower<Integer>, Comparable<GeneralFlower>
                 "id=" + id +
 				"freshness=" + freshness +
 				", price=" + price +
-				", lenght=" + lenght +
+				", length=" + length +
 				'}';
 	}
 }

@@ -62,7 +62,7 @@ public class MarriedBouquet implements Bouquet<GeneralFlower>, AbstractJson {
 	public Collection<GeneralFlower> searchFlowersByLength(int start, int end) {
 		List<GeneralFlower> searchResult = new ArrayList<>();
 		for (GeneralFlower flower : flowerList) {
-			if (flower.getLenght() >= start && flower.getLenght() <= end) {
+			if (flower.getLength() >= start && flower.getLength() <= end) {
 				searchResult.add(flower);
 			}
 		}
@@ -83,6 +83,7 @@ public class MarriedBouquet implements Bouquet<GeneralFlower>, AbstractJson {
 		assemblePrice = price;
 	}
 
+	@Override
 	public float getAssemblePrice() { return assemblePrice; }
 
 	@Override

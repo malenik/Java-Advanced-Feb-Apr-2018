@@ -110,9 +110,9 @@ public class MarriedBouquetTest {
 
         List<GeneralFlower> mockedFlowers = Arrays.asList(mockRose, mockChamomile, mockTulip);
 
-        when(mockRose.getLenght()).thenReturn(90);
-        when(mockChamomile.getLenght()).thenReturn(70);
-        when(mockTulip.getLenght()).thenReturn(80);
+        when(mockRose.getLength()).thenReturn(90);
+        when(mockChamomile.getLength()).thenReturn(70);
+        when(mockTulip.getLength()).thenReturn(80);
 
         Collection<GeneralFlower> expectedResult = Arrays.asList(mockChamomile, mockTulip);
 
