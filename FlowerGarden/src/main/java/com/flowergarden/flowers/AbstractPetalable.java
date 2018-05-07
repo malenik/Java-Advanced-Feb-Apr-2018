@@ -12,7 +12,7 @@ public abstract class AbstractPetalable extends GeneralFlower implements Petalal
      */
 
     @XmlElement
-    protected int petals;
+    private int petals;
 
     public AbstractPetalable() {
     }

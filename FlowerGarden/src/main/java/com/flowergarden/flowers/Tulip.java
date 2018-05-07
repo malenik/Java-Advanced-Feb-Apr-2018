@@ -3,16 +3,20 @@ package com.flowergarden.flowers;
 
 import com.flowergarden.properties.FreshnessInteger;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Objects;
 @XmlRootElement
 public class Tulip extends AbstractPetalable {
+
+    @XmlElement
+    private int petals;
+
     public Tulip(int petals, int lenght, float price, FreshnessInteger fresh) {
         super(fresh, price, lenght, petals);
     }
 
     public Tulip() {
-
     }
 
     @Override
@@ -21,6 +25,16 @@ public class Tulip extends AbstractPetalable {
         if (o == null || getClass() != o.getClass()) return false;
         Tulip tulip = (Tulip) o;
         return petals == tulip.petals;
+    }
+
+    @Override
+    public int getPetals() {
+        return petals;
+    }
+
+    @Override
+    public void setPetals(int petals) {
+        this.petals = petals;
     }
 
     @Override

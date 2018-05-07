@@ -10,11 +10,9 @@ import java.util.List;
 
 public interface MarriedBouquetDAO {
 
-    int createBouquet(MarriedBouquet marriedBouquet) throws SQLException;
-
     void updateBouquet(int key, MarriedBouquet marriedBouquet) throws SQLException;
 
-    void deleteBouquet(int key) throws SQLException;;
+    void deleteBouquet(int key) throws SQLException;
 
     List<Bouquet> getAllBouquets() throws SQLException;
 

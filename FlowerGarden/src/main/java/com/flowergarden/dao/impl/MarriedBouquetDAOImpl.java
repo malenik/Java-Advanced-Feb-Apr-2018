@@ -7,7 +7,6 @@ import com.flowergarden.dao.FlowerDAO;
 import com.flowergarden.dao.MarriedBouquetDAO;
 import com.flowergarden.flowers.GeneralFlower;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
@@ -62,10 +61,6 @@ public class MarriedBouquetDAOImpl implements MarriedBouquetDAO {
         this.flowerDAO = flowerDAO;
     }
 
-    @Override
-    public int createBouquet(MarriedBouquet marriedBouquet) {
-        return 0; // This method I'll finished soon
-    }
 
     @Override
     public void updateBouquet(int key, MarriedBouquet marriedBouquet) throws SQLException {

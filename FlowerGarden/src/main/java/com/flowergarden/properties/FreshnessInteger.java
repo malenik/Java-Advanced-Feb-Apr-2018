@@ -13,7 +13,7 @@ public class FreshnessInteger implements Freshness<Integer>, Comparable<Freshnes
 	public Integer getFreshness() {
 		return freshness;
 	}
-	
+
 	public FreshnessInteger(Integer freshness){
 		this.freshness = freshness;
 	}

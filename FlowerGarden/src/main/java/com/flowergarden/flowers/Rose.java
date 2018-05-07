@@ -19,7 +19,6 @@ public class Rose extends GeneralFlower {
     }
 
     public Rose() {
-
     }
 
     public boolean getSpike() {

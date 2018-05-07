@@ -20,12 +20,6 @@ import java.util.Properties;
 @Repository
 public class FlowerDAOImpl implements FlowerDAO {
 
-    public static FlowerDAO INSTANCE = createInstance();
-
-    private static FlowerDAO createInstance() {
-        return new FlowerDAOImpl(ConnectionPoolImpl.INSTANCE);
-    }
-
     private static final String SQL_FLOWER_ID = "sqlFlowersById";
     private static final String SQL_UPDATE_FLOWER1 = "sqlUpdateFlower1";
     private static final String SQL_UPDATE_FLOWER2 = "sqlUpdateFlower2";
@@ -46,7 +40,6 @@ public class FlowerDAOImpl implements FlowerDAO {
     private ConnectionPool connectionPool;
 
     public FlowerDAOImpl() {
-        System.out.println("Pis6ka");
     }
 
     @Autowired

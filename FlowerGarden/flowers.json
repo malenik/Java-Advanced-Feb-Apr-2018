@@ -8,7 +8,7 @@
     "id" : 1,
     "price" : 12.5,
     "length" : 10,
-    "petals" : 6,
+    "petals" : 0,
     "petal" : true
   }, {
     "freshness" : {

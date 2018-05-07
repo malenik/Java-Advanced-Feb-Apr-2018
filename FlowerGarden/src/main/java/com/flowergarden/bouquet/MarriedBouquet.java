@@ -16,7 +16,7 @@ public class MarriedBouquet implements Bouquet<GeneralFlower>, AbstractJson {
 	List<GeneralFlower> flowerList = new ArrayList<>();
 
     @XmlElement
-    int bouquetId;
+    private int bouquetId;
 
     public MarriedBouquet(float assemblePrice, List<GeneralFlower> flowerList) {
         this.assemblePrice = assemblePrice;

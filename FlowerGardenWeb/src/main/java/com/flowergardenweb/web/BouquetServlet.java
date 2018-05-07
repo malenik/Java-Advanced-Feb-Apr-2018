@@ -51,6 +51,7 @@ public class BouquetServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            log.info("SQLException in try block");
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.flowergarden.dao;
 
 import com.flowergarden.bouquet.Bouquet;
+import com.flowergarden.bouquet.IPrice;
 import com.flowergarden.bouquet.MarriedBouquet;
 import com.flowergarden.dao.impl.ConnectionPoolImpl;
 import com.flowergarden.dao.impl.FlowerDAOImpl;
@@ -9,9 +10,11 @@ import com.flowergarden.flowers.GeneralFlower;
 import com.flowergarden.flowers.Rose;
 import com.flowergarden.properties.FreshnessInteger;
 
+import java.util.Collection;
 import java.util.List;
 
 public class DAOLauncher {
+
     public static void main(String[] args) throws Exception {
 
         try (ConnectionPool connectionPool = new ConnectionPoolImpl()) {
@@ -45,10 +48,22 @@ public class DAOLauncher {
 
             marriedBouquetDAO.updateBouquet(((MarriedBouquet) bouquet1).getBouquetId(), (MarriedBouquet) bouquet1);
 
-
             List<Bouquet> listBouquets = marriedBouquetDAO.getAllBouquets();
             for (Bouquet bouquet : listBouquets) {
                 System.out.println(bouquet);
+            }
+
+            System.out.println("*****************************************");
+
+            System.out.println("IPrice testing: ");
+
+            IPrice bouquetPrice = marriedBouquetDAO.getBouquetById(1);
+            //IPrice flowerPrice = flowerDAO.getFlowerById(1);
+
+            Bouquet bouq = (MarriedBouquet) bouquetPrice;
+            Collection<IPrice> priceList = bouq.getFlowers();
+            for (IPrice fPrice : priceList) {
+                System.out.println(fPrice.getPrice());
             }
         }
     }
