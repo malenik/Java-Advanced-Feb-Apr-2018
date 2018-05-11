@@ -1,4 +1,4 @@
-/*package com.flowergarden.run.TSafeArrayLists;
+package com.flowergarden.concurrency.ThreadSafeArrayLists;
 
 import org.apache.log4j.Logger;
 
@@ -22,4 +22,4 @@ public class SynchronizedArrayList {
         List<String> synchronizedArrayList = Collections.synchronizedList(list1);
         log.info("Synchronized List contains: " + synchronizedArrayList);
     }
-}*/
+}
